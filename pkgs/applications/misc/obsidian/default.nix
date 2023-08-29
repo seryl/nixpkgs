@@ -34,15 +34,17 @@ let
     sha256 = "100j8fcrc5q8zv525siapminffri83s2khs2hw4kdxwrdjwh36qi";
   };
 
-  desktopItem = makeDesktopItem {
-    name = "obsidian";
-    desktopName = "Obsidian";
-    comment = "Knowledge base";
-    icon = "obsidian";
-    exec = "obsidian %u";
-    categories = [ "Office" ];
-    mimeTypes = [ "x-scheme-handler/obsidian" ];
-  };
+  desktopItems = [
+    (makeDesktopItem {
+      name = "obsidian";
+      desktopName = "Obsidian";
+      comment = "Knowledge base";
+      icon = "obsidian";
+      exec = "obsidian %u";
+      categories = [ "Office" ];
+      mimeTypes = [ "x-scheme-handler/obsidian" ];
+    })
+  ];
 
   linux = stdenv.mkDerivation {
     inherit pname version src desktopItem icon;
