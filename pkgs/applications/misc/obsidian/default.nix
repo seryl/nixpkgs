@@ -4,6 +4,7 @@
 , makeWrapper
 , electron
 , makeDesktopItem
+, copyDesktopItems
 , imagemagick
 , writeScript
 , undmg
@@ -46,7 +47,7 @@ let
   linux = stdenv.mkDerivation {
     inherit pname version src desktopItem icon;
     meta = meta // { platforms = [ "x86_64-linux" "aarch64-linux" ]; };
-    nativeBuildInputs = [ makeWrapper imagemagick ];
+    nativeBuildInputs = [ makeWrapper imagemagick copyDesktopItems ];
     installPhase = ''
       runHook preInstall
       mkdir -p $out/bin
